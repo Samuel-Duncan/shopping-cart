@@ -14,6 +14,7 @@ body {
   background-image: url('assets/shopping-cart-background.jpeg');
 }
 
-.cart-icon {
+.cart-qty {
+  position: absolute;
   transform: translate(-50%, -95%);
 }
