@@ -8,7 +8,7 @@ const Header = ({ cartQty = 0 }) => {
           <div className="text-center">
             <button
               aria-controls="drawer-navigation"
-              className=" hover:bg-neutral-400 focus:ring-4 focus:ring-neutral-400 rounded-md text-sm focus:outline-none"
+              className=" hover:bg-gray-100 focus:ring-2 focus:ring-gray-100 rounded-md text-sm focus:outline-none"
               data-drawer-show="drawer-navigation"
               data-drawer-target="drawer-navigation"
               type="button"
