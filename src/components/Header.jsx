@@ -1,16 +1,16 @@
-import Menu from './Menu';
-
 const Header = ({ cartQty = 0 }) => {
   return (
     <>
       <header>
         <div className="flex justify-between items-center px-3 py-4">
+          {/* MENU */}
           <div className="text-center">
             <button
-              aria-controls="drawer-navigation"
-              className=" hover:bg-gray-100 focus:ring-2 focus:ring-gray-100 rounded-md text-sm focus:outline-none"
-              data-drawer-show="drawer-navigation"
-              data-drawer-target="drawer-navigation"
+              aria-controls="drawer-left-navigation"
+              className=" hover:bg-neutral-300 focus:ring-2 focus:ring-neutral-300 rounded-md text-sm focus:outline-none px-0.5 py-0.5"
+              data-drawer-show="drawer-left-navigation"
+              data-drawer-target="drawer-left-navigation"
+              data-drawer-placement="left"
               type="button"
             >
               <svg
@@ -32,6 +32,7 @@ const Header = ({ cartQty = 0 }) => {
               </svg>
             </button>
           </div>
+          {/* LOGO */}
           <h1 className="max-w-20 min-w-20">
             <a href="">
               <svg
@@ -45,13 +46,14 @@ const Header = ({ cartQty = 0 }) => {
               </svg>
             </a>
           </h1>
+          {/* CART */}
           <button
-            href="/cart"
-            className="site-header__trigger"
-            aria-label="Bag"
-            aria-controls="cart-drawer"
-            aria-expanded="false"
-            js-drawer-open-bag=""
+            aria-controls="drawer-right-cart"
+            className=" hover:bg-neutral-300 focus:ring-2 focus:ring-neutral-300 rounded-md text-sm focus:outline-none px-1 py-1"
+            data-drawer-target="drawer-right-cart"
+            data-drawer-show="drawer-right-cart"
+            data-drawer-placement="right"
+            type="button"
           >
             <svg
               className=""
@@ -63,11 +65,12 @@ const Header = ({ cartQty = 0 }) => {
               <title>Shopping Bag</title>
               <path d="M17,4.5v-1.5c0-.8-.31-1.55-.88-2.12s-1.32-.88-2.12-.88h-4c-.8,0-1.55,.31-2.12,.88s-.88,1.32-.88,2.12v1.5H0V21.5H24V4.5h-7Zm-8.5-1.5c0-.4,.16-.78,.44-1.06,.28-.28,.66-.44,1.06-.44h4c.4,0,.78,.16,1.06,.44,.28,.28,.44,.66,.44,1.06v1.5h-7v-1.5Zm14,17H1.5V6H22.5v14Z" />
             </svg>
-            <span className="cart-qty">{cartQty}</span>
+            <span className="absolute translate-x-[-50%] translate-y-[-105%]">
+              {cartQty}
+            </span>
           </button>
         </div>
       </header>
-      <Menu />
     </>
   );
 };
