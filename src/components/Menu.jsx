@@ -1,6 +1,6 @@
 const Menu = () => {
   return (
-    <div>
+    <>
       <div
         aria-labelledby="drawer-navigation-label"
         className="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-neutral-300 w-72 dark:bg-gray-800"
@@ -16,7 +16,7 @@ const Menu = () => {
         {/* CLOSE BTN */}
         <button
           aria-controls="drawer-left-navigation"
-          className="text-gray-900 bg-transparent hover:bg-gray-400 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-gray-400"
+          className="text-gray-900 bg-transparent hover:bg-gray-400 focus:bg-gray-400 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-gray-400"
           data-drawer-hide="drawer-left-navigation"
           type="button"
         >
@@ -39,7 +39,7 @@ const Menu = () => {
         </button>
         {/* CONTENT */}
         <div className="py-4 overflow-y-auto">
-          <ul className="space-y-2 font-medium">
+          <ul role="list" className="space-y-2 font-medium">
             <li>
               <a
                 className="flex items-center p-2 text-gray-400 rounded-lg dark:text-gray-500 hover:bg-gray-400 dark:hover:bg-gray-700 group"
@@ -108,7 +108,7 @@ const Menu = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

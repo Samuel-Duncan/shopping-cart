@@ -1,4 +1,4 @@
-const Cart = () => {
+const Cart = ({ qty = 0 }) => {
   return (
     <div>
       <div
@@ -11,7 +11,7 @@ const Cart = () => {
           className="text-base font-semibold text-gray-900 uppercase dark:text-gray-700"
           id="drawer-cart-label"
         >
-          Cart
+          Cart ({qty})
         </h5>
         {/* CLOSE BTN */}
         <button
@@ -39,7 +39,7 @@ const Cart = () => {
         </button>
         {/* CONTENT */}
         <div className="py-4 overflow-y-auto">
-          <ul className="space-y-2 font-medium"></ul>
+          <ul role="list" className="space-y-2 font-medium"></ul>
         </div>
       </div>
     </div>
