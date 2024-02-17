@@ -2,12 +2,12 @@ const Header = ({ cartQty = 0 }) => {
   return (
     <>
       <header>
-        <div className="flex justify-between items-center px-3 py-4">
+        <div className="flex items-center justify-between px-3 py-4">
           {/* MENU */}
           <div className="text-center">
             <button
               aria-controls="drawer-left-navigation"
-              className=" hover:bg-neutral-300 focus:bg-neutral-300 focus:ring-2 focus:ring-neutral-300 rounded-md text-sm focus:outline-none px-0.5 py-0.5"
+              className=" rounded-md px-0.5 py-0.5 text-sm hover:bg-neutral-300 focus:bg-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-300"
               data-drawer-show="drawer-left-navigation"
               data-drawer-target="drawer-left-navigation"
               data-drawer-placement="left"
@@ -33,7 +33,7 @@ const Header = ({ cartQty = 0 }) => {
             </button>
           </div>
           {/* LOGO */}
-          <h1 className="max-w-20 min-w-20">
+          <h1 className="min-w-20 max-w-20">
             <a href="">
               <svg
                 aria-hidden="true"
@@ -49,7 +49,7 @@ const Header = ({ cartQty = 0 }) => {
           {/* CART */}
           <button
             aria-controls="drawer-right-cart"
-            className=" hover:bg-neutral-300 focus:bg-neutral-300 focus:ring-2 focus:ring-neutral-300 rounded-md text-sm focus:outline-none px-1 py-1"
+            className=" rounded-md px-1 py-1 text-sm hover:bg-neutral-300 focus:bg-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-300"
             data-drawer-target="drawer-right-cart"
             data-drawer-show="drawer-right-cart"
             data-drawer-placement="right"
