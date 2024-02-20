@@ -1,16 +1,26 @@
 import { useState } from 'react';
 
-const ProductCard = ({ product, onClick }) => {
-  const [qty, setQty] = useState(1);
+const ProductCard = ({
+  product,
+  itemQty = 1,
+  onAdd,
+  onRemove,
+  isInCart = false,
+}) => {
+  const [qty, setQty] = useState(itemQty);
   const initialPrice = qty * product.price;
   const price = parseFloat(initialPrice.toFixed(2));
 
   const onInc = () => {
-    setQty((quantity) => quantity + 1);
+    setQty((prevQty) => prevQty + 1);
   };
 
   const onDec = () => {
-    setQty((quantity) => quantity - 1);
+    setQty((prevQty) => prevQty - 1);
+  };
+
+  const resetQty = () => {
+    setQty(1);
   };
 
   return (
@@ -78,13 +88,29 @@ const ProductCard = ({ product, onClick }) => {
           <span className="text-3xl font-bold text-gray-900 dark:text-white">
             {`$${price}`}
           </span>
-          <button
-            onClick={() => onClick(product, price, qty)}
-            href="#"
-            className="rounded-lg bg-[#050708] px-5 py-2.5 text-center text-lg font-medium text-neutral-300 hover:bg-[#050708]/90 focus:outline-none focus:ring-4 focus:ring-neutral-300"
-          >
-            Add to cart
-          </button>
+          {!isInCart ? (
+            <button
+              onClick={() => {
+                onAdd(product, price, qty);
+                resetQty();
+              }}
+              href="#"
+              className="rounded-lg bg-[#050708] px-5 py-2.5 text-center text-lg font-medium text-neutral-300 hover:bg-[#050708]/90 focus:outline-none focus:ring-4 focus:ring-neutral-300"
+            >
+              Add to cart
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                onRemove(product.id);
+                resetQty();
+              }}
+              href="#"
+              className="rounded-lg bg-[#050708] px-5 py-2.5 text-center text-lg font-medium text-neutral-300 hover:bg-[#050708]/90 focus:outline-none focus:ring-4 focus:ring-neutral-300"
+            >
+              Remove
+            </button>
+          )}
         </div>
       </div>
     </li>

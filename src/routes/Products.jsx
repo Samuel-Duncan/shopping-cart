@@ -32,7 +32,7 @@ const getProducts = () => {
   return { products, error, loading };
 };
 
-const Products = ({ onClick }) => {
+const Products = ({ onAdd }) => {
   const { products, error, loading } = getProducts();
 
   return (
@@ -70,11 +70,7 @@ const Products = ({ onClick }) => {
           >
             {products &&
               products.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  onClick={onClick}
-                />
+                <ProductCard key={product.id} product={product} onAdd={onAdd} />
               ))}
           </ul>
         </>

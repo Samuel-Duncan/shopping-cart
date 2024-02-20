@@ -1,4 +1,6 @@
-const Cart = ({ cartQty = 0 }) => {
+import ProductCard from './ProductCard';
+
+const Cart = ({ cartQty = 0, cartItems, onRemove, itemQty, cartTotal = 0 }) => {
   return (
     <div>
       <div
@@ -7,12 +9,12 @@ const Cart = ({ cartQty = 0 }) => {
         tabIndex="-1"
         aria-labelledby="drawer-cart-label"
       >
-        <h5
+        <h4
           className="text-base font-semibold uppercase text-gray-900 dark:text-gray-700"
           id="drawer-cart-label"
         >
-          Cart ({cartQty})
-        </h5>
+          Cart ({cartQty}) ${cartTotal}
+        </h4>
         {/* CLOSE BTN */}
         <button
           type="button"
@@ -39,7 +41,18 @@ const Cart = ({ cartQty = 0 }) => {
         </button>
         {/* CONTENT */}
         <div className="overflow-y-auto py-4">
-          <ul role="list" className="space-y-2 font-medium"></ul>
+          <ul role="list" className="space-y-2 font-medium">
+            {cartItems &&
+              cartItems.map((item) => (
+                <ProductCard
+                  key={item.product.id}
+                  product={item.product}
+                  onRemove={onRemove}
+                  isInCart={true}
+                  itemQty={itemQty}
+                />
+              ))}
+          </ul>
         </div>
       </div>
     </div>

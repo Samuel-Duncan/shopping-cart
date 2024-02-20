@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <>
-      <main className="">
+      <main className="home">
         <div className="mt-2 flex flex-col items-start space-y-8 px-4 py-2 sm:mt-8 sm:items-center sm:space-y-16 sm:p-4 sm:text-center">
           <h2 className="text-4xl sm:text-8xl">Kith Fall Collection 2024</h2>
           <Link to="products">
