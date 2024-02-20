@@ -65,7 +65,7 @@ const Header = ({ cartQty = 0 }) => {
               <title>Shopping Bag</title>
               <path d="M17,4.5v-1.5c0-.8-.31-1.55-.88-2.12s-1.32-.88-2.12-.88h-4c-.8,0-1.55,.31-2.12,.88s-.88,1.32-.88,2.12v1.5H0V21.5H24V4.5h-7Zm-8.5-1.5c0-.4,.16-.78,.44-1.06,.28-.28,.66-.44,1.06-.44h4c.4,0,.78,.16,1.06,.44,.28,.28,.44,.66,.44,1.06v1.5h-7v-1.5Zm14,17H1.5V6H22.5v14Z" />
             </svg>
-            <span className="absolute translate-x-[-50%] translate-y-[-102%]">
+            <span className="absolute translate-x-[-50%] translate-y-[-103%]">
               {cartQty}
             </span>
           </button>

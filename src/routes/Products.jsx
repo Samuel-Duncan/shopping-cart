@@ -61,7 +61,7 @@ const Products = ({ onClick }) => {
       )}
       {products && (
         <>
-          <div className="mt-6 space-y-8 px-4 py-2 text-center sm:mb-10 sm:mt-12 sm:space-y-16 sm:p-4">
+          <div className="mt-6 space-y-8 px-4 py-2 text-center sm:mb-6 sm:mt-12 sm:space-y-16 sm:p-4">
             <h2 className="text-5xl sm:text-8xl">Explore our Collection</h2>
           </div>
           <ul

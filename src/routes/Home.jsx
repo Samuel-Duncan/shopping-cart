@@ -9,7 +9,7 @@ const Home = () => {
           <Link to="products">
             <button
               type="button"
-              className="inline-flex h-auto w-auto items-center justify-center rounded-lg bg-[#050708] px-5 py-2.5 text-center text-lg font-medium text-neutral-300 hover:bg-[#050708]/90 focus:outline-none focus:ring-4 focus:ring-neutral-300 sm:h-20 sm:w-64"
+              className="inline-flex h-auto w-auto items-center justify-center rounded-lg bg-[#050708] px-5 py-2.5 text-center text-lg font-medium text-neutral-300 hover:bg-[#050708]/90 focus:outline-none focus:ring-4 focus:ring-neutral-300 sm:h-20 sm:w-64 sm:text-xl"
             >
               Shop Now
             </button>
