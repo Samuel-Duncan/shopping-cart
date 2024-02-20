@@ -24,10 +24,7 @@ const getProducts = () => {
 
         return response.json();
       })
-      .then((response) => {
-        console.log(response);
-        setProducts(organizeProducts(response));
-      })
+      .then((response) => setProducts(organizeProducts(response)))
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
   }, []);
@@ -39,16 +36,13 @@ const Products = ({ onClick }) => {
   const { products, error, loading } = getProducts();
 
   return (
-    <div className="">
-      <div className="mt-2 flex flex-col items-start space-y-8 px-4 py-2 sm:mt-8 sm:items-center sm:space-y-16 sm:p-4 sm:text-center">
-        <h2 className="text-4xl sm:text-8xl">Explore our Collection</h2>
-      </div>
+    <div className="flex flex-col items-center">
       {error && <p>error</p>}
       {loading && (
-        <div role="status" className="flex flex-col items-center text-center">
+        <div role="status" className="p4 mt-12">
           <svg
             aria-hidden="true"
-            class="h-8 w-8 animate-spin fill-gray-900 text-gray-200 dark:text-gray-600"
+            className="h-8 w-8 animate-spin fill-gray-900 text-gray-200 dark:text-gray-600"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -62,23 +56,28 @@ const Products = ({ onClick }) => {
               fill="currentFill"
             />
           </svg>
-          <span class="sr-only">Loading...</span>
+          <span className="sr-only">Loading...</span>
         </div>
       )}
       {products && (
-        <ul
-          role="list"
-          className="flex max-w-[1280px] flex-wrap items-center justify-around space-y-8 px-4 py-2"
-        >
-          {products &&
-            products.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onClick={onClick}
-              />
-            ))}
-        </ul>
+        <>
+          <div className="mt-6 space-y-8 px-4 py-2 text-center sm:mb-10 sm:mt-12 sm:space-y-16 sm:p-4">
+            <h2 className="text-5xl sm:text-8xl">Explore our Collection</h2>
+          </div>
+          <ul
+            role="list"
+            className="mt-6 grid grid-cols-1 gap-12 px-4 py-8 sm:mt-10 sm:px-12 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
+          >
+            {products &&
+              products.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onClick={onClick}
+                />
+              ))}
+          </ul>
+        </>
       )}
     </div>
   );
