@@ -11,12 +11,21 @@ const ProductCard = ({
   const [qty, setQty] = useState(itemQty);
   const initialPrice = qty * product.price;
   const price = parseFloat(initialPrice.toFixed(2));
+  const [addedToCart, setAddedToCart] = useState(false);
+  const buttonColor = addedToCart ? 'bg-green-500' : 'bg-black';
 
   useEffect(() => {
     if (onUpdate) {
       onUpdate(product.id, qty, price);
     }
   }, [qty]);
+
+  const onAddToCart = () => {
+    setAddedToCart(true);
+    setTimeout(() => {
+      setAddedToCart(false);
+    }, 2000);
+  };
 
   const onInc = () => {
     setQty((prevQty) => prevQty + 1);
@@ -99,12 +108,13 @@ const ProductCard = ({
             <button
               onClick={() => {
                 onAdd(product, price, qty);
+                onAddToCart();
                 resetQty();
               }}
               href="#"
-              className="rounded-lg bg-[#050708] px-5 py-2.5 text-center text-lg font-medium text-neutral-300 hover:bg-[#050708]/90 focus:outline-none focus:ring-4 focus:ring-neutral-300"
+              className={`rounded-lg ${buttonColor} px-5 py-2.5 text-center text-lg font-medium text-neutral-300 transition-colors hover:bg-[#050708]/90 focus:outline-none`}
             >
-              Add to cart
+              {addedToCart ? 'Added to Cart' : 'Add to Cart'}
             </button>
           ) : (
             <button
@@ -113,7 +123,7 @@ const ProductCard = ({
                 resetQty();
               }}
               href="#"
-              className="rounded-lg bg-[#050708] px-5 py-2.5 text-center text-lg font-medium text-neutral-300 hover:bg-[#050708]/90 focus:outline-none focus:ring-4 focus:ring-neutral-300"
+              className="rounded-lg bg-red-700 px-5 py-2.5 text-center text-lg font-medium text-neutral-200 hover:bg-red-600 focus:outline-none"
             >
               Remove
             </button>

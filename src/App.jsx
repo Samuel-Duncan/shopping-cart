@@ -26,17 +26,30 @@ const App = () => {
     setCartItems(updatedCart);
   };
 
+  const isInCart = (arr, id) => {
+    return arr.some((item) => item.product.id === id);
+  };
+
   const addToCart = (product, price, qty) => {
     setItemQty(qty);
 
-    setCartItems((prevCartItems) => [
-      ...prevCartItems,
-      {
-        product: product,
-        price: price,
-        qty: qty,
-      },
-    ]);
+    // Check if the product is already in the cart
+    const alreadyInCart = isInCart(cartItems, product.id);
+
+    if (alreadyInCart) {
+      alert('Items already in cart!');
+      return;
+    } else {
+      // If the product is not in the cart, add it to cartItems
+      setCartItems((prevCartItems) => [
+        ...prevCartItems,
+        {
+          product: product,
+          price: price,
+          qty: qty,
+        },
+      ]);
+    }
   };
 
   const removeFromCart = (productId) => {
