@@ -39,7 +39,7 @@ const ProductCard = ({
           alt={product.title}
         />
       </a>
-      <div className="flex flex-col justify-between px-5 pb-5">
+      <div className="flex h-full flex-col justify-between px-5 pb-5">
         <div>
           <a href="#">
             <h3 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
