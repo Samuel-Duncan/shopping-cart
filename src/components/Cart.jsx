@@ -1,6 +1,13 @@
 import ProductCard from './ProductCard';
 
-const Cart = ({ cartQty = 0, cartItems, onRemove, itemQty, cartTotal = 0 }) => {
+const Cart = ({
+  cartQty = 0,
+  cartItems,
+  onRemove,
+  itemQty,
+  cartTotal = 0,
+  onUpdate,
+}) => {
   return (
     <div>
       <div
@@ -50,6 +57,7 @@ const Cart = ({ cartQty = 0, cartItems, onRemove, itemQty, cartTotal = 0 }) => {
                   onRemove={onRemove}
                   isInCart={true}
                   itemQty={itemQty}
+                  onUpdate={onUpdate}
                 />
               ))}
           </ul>

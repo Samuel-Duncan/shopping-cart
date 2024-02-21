@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const ProductCard = ({
   product,
@@ -6,10 +6,17 @@ const ProductCard = ({
   onAdd,
   onRemove,
   isInCart = false,
+  onUpdate,
 }) => {
   const [qty, setQty] = useState(itemQty);
   const initialPrice = qty * product.price;
   const price = parseFloat(initialPrice.toFixed(2));
+
+  useEffect(() => {
+    if (onUpdate) {
+      onUpdate(product.id, qty, price);
+    }
+  }, [qty]);
 
   const onInc = () => {
     setQty((prevQty) => prevQty + 1);

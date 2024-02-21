@@ -3,7 +3,14 @@ import Header from '../components/Header';
 import Menu from '../components/Menu';
 import Cart from '../components/Cart';
 
-const Root = ({ cartQty, cartItems, onRemove, itemQty, cartTotal }) => {
+const Root = ({
+  cartQty,
+  cartItems,
+  onRemove,
+  itemQty,
+  cartTotal,
+  onUpdate,
+}) => {
   return (
     <>
       <Header cartQty={cartQty} />
@@ -14,6 +21,7 @@ const Root = ({ cartQty, cartItems, onRemove, itemQty, cartTotal }) => {
         cartItems={cartItems}
         itemQty={itemQty}
         cartTotal={cartTotal}
+        onUpdate={onUpdate}
       />
       <Outlet />
     </>

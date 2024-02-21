@@ -10,6 +10,7 @@ const Router = ({
   onRemove,
   itemQty,
   cartTotal,
+  onUpdate,
 }) => {
   const router = createBrowserRouter([
     {
@@ -21,6 +22,7 @@ const Router = ({
           onRemove={onRemove}
           itemQty={itemQty}
           cartTotal={cartTotal}
+          onUpdate={onUpdate}
         />
       ),
       children: [

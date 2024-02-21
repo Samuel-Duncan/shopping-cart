@@ -4,8 +4,27 @@ import Router from './Router';
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
   const cartQty = cartItems.reduce((acc, item) => acc + item.qty, 0);
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
+  const totalPrice = parseFloat(
+    cartItems.reduce((acc, item) => acc + item.price, 0),
+  ).toFixed(2);
   const [itemQty, setItemQty] = useState(null);
+
+  const onUpdate = (productId, qty, price) => {
+    setItemQty(qty);
+
+    const updatedCart = cartItems.map((item) => {
+      if (item.product.id === productId) {
+        return {
+          ...item,
+          price: price,
+          qty: qty,
+        };
+      }
+      return item;
+    });
+
+    setCartItems(updatedCart);
+  };
 
   const addToCart = (product, price, qty) => {
     setItemQty(qty);
@@ -34,6 +53,7 @@ const App = () => {
       onRemove={removeFromCart}
       itemQty={itemQty}
       cartTotal={totalPrice}
+      onUpdate={onUpdate}
     />
   );
 };
