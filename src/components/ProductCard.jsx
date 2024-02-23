@@ -26,7 +26,7 @@ const ProductCard = ({
     setAddedToCart(true);
     setTimeout(() => {
       setAddedToCart(false);
-    }, 2000);
+    }, 1250);
   };
 
   const onInc = () => {
