@@ -1,10 +1,10 @@
+import { useEffect } from 'react';
 import ProductCard from './ProductCard';
 
 const Cart = ({
   cartQty = 0,
   cartItems,
   onRemove,
-  itemQty,
   cartTotal = 0,
   onUpdate,
 }) => {
@@ -56,7 +56,7 @@ const Cart = ({
                   product={item.product}
                   onRemove={onRemove}
                   isInCart={true}
-                  itemQty={itemQty}
+                  itemQty={item.qty}
                   onUpdate={onUpdate}
                 />
               ))}

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { v4 as uuid } from 'uuid';
 import Router from './Router';
 
 const App = () => {
@@ -9,9 +10,11 @@ const App = () => {
   ).toFixed(2);
   const [itemQty, setItemQty] = useState(null);
 
-  const onUpdate = (productId, qty, price) => {
-    setItemQty(qty);
+  const isInCart = (items, id) => {
+    return items.some((item) => item.product.id === id);
+  };
 
+  const onUpdate = (productId, qty, price) => {
     const updatedCart = cartItems.map((item) => {
       if (item.product.id === productId) {
         return {
@@ -26,29 +29,33 @@ const App = () => {
     setCartItems(updatedCart);
   };
 
-  const isInCart = (arr, id) => {
-    return arr.some((item) => item.product.id === id);
-  };
-
-  const addToCart = (product, price, qty) => {
-    setItemQty(qty);
-
-    // Check if the product is already in the cart
-    const alreadyInCart = isInCart(cartItems, product.id);
-
-    if (alreadyInCart) {
-      alert('Items already in cart!');
-      return;
+  const addToCart = (productToAdd, price, qty) => {
+    if (isInCart(cartItems, productToAdd.id)) {
+      setCartItems(
+        cartItems.map((item) => {
+          if (item.product.id === productToAdd.id) {
+            return {
+              ...item,
+              price: price + item.price,
+              qty: qty + item.qty,
+            };
+          } else {
+            return item;
+          }
+        }),
+      );
     } else {
-      // If the product is not in the cart, add it to cartItems
-      setCartItems((prevCartItems) => [
-        ...prevCartItems,
-        {
-          product: product,
-          price: price,
-          qty: qty,
+      // Create a new product object with updated price and quantity
+      const newProduct = {
+        product: {
+          ...productToAdd,
+          id: uuid(),
         },
-      ]);
+        price: price,
+        qty: qty,
+      };
+      setItemQty(qty);
+      setCartItems([...cartItems, newProduct]);
     }
   };
 

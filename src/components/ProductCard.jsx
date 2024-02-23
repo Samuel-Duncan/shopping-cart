@@ -14,11 +14,13 @@ const ProductCard = ({
   const [addedToCart, setAddedToCart] = useState(false);
   const buttonColor = addedToCart ? 'bg-green-500' : 'bg-black';
 
+  useEffect(() => {}, [product]);
+
   useEffect(() => {
     if (onUpdate) {
       onUpdate(product.id, qty, price);
     }
-  }, [qty]);
+  }, [price, product, qty]);
 
   const onAddToCart = () => {
     setAddedToCart(true);
@@ -40,10 +42,10 @@ const ProductCard = ({
   };
 
   return (
-    <li className="flex w-full max-w-sm flex-col rounded-lg border border-gray-200 bg-white shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] dark:border-gray-700 dark:bg-gray-800">
+    <li className="flex w-full max-w-sm flex-col rounded-lg border border-gray-200 bg-white shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] sm:h-auto dark:border-gray-700 dark:bg-gray-800">
       <a href="#">
         <img
-          className="h-[350px] w-[500px] rounded-t-lg object-contain p-8"
+          className="h-[250px] w-[500px] rounded-t-lg object-contain p-8 sm:h-[350px]"
           src={product.image}
           alt={product.title}
         />
@@ -112,7 +114,7 @@ const ProductCard = ({
                 resetQty();
               }}
               href="#"
-              className={`rounded-lg ${buttonColor} px-5 py-2.5 text-center text-lg font-medium text-neutral-300 transition-colors hover:bg-[#050708]/90 focus:outline-none`}
+              className={`${buttonColor} ${addedToCart ? 'hover:bg-green-500' : 'hover:bg-[#050708]/90'} rounded-lg px-5 py-2.5 text-center text-lg font-medium text-neutral-300 transition-colors  focus:outline-none`}
             >
               {addedToCart ? 'Added to Cart' : 'Add to Cart'}
             </button>

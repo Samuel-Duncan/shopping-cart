@@ -36,10 +36,10 @@ const Products = ({ onAdd }) => {
   const { products, error, loading } = getProducts();
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center bg-gray-400">
       {error && <p>error</p>}
       {loading && (
-        <div role="status" className="p4 mt-12">
+        <div role="status" className="p4 mt-20 h-screen">
           <svg
             aria-hidden="true"
             className="h-8 w-8 animate-spin fill-gray-900 text-gray-200 dark:text-gray-600"
@@ -61,12 +61,12 @@ const Products = ({ onAdd }) => {
       )}
       {products && (
         <>
-          <div className="mt-6 space-y-8 px-4 py-2 text-center sm:mb-6 sm:mt-12 sm:space-y-16 sm:p-4">
+          <div className="mt-16 space-y-8 px-4 py-2 text-center sm:mb-6 sm:mt-20 sm:space-y-16 sm:p-4">
             <h2 className="text-5xl sm:text-8xl">Explore our Collection</h2>
           </div>
           <ul
             role="list"
-            className="mt-6 grid grid-cols-1 gap-12 px-4 py-8 sm:mt-10 sm:px-12 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
+            className="mt-0 grid grid-cols-1 gap-12 px-4 py-8 pb-12 sm:mt-3 sm:px-12 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
           >
             {products &&
               products.map((product) => (
