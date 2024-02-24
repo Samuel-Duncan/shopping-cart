@@ -42,7 +42,7 @@ const ProductCard = ({
   };
 
   return (
-    <li className="flex w-full max-w-sm flex-col rounded-lg border border-gray-200 bg-white shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] sm:h-auto dark:border-gray-700 dark:bg-gray-800">
+    <li className="flex w-full max-w-sm flex-col rounded-lg border border-gray-200 bg-white shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] sm:h-auto">
       <a href="#">
         <img
           className="h-[250px] w-[500px] rounded-t-lg object-contain p-8 sm:h-[350px]"
@@ -53,7 +53,7 @@ const ProductCard = ({
       <div className="flex h-full flex-col justify-between px-5 pb-5">
         <div>
           <a href="#">
-            <h3 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+            <h3 className="text-xl font-semibold tracking-tight text-gray-900">
               {product.title}
             </h3>
           </a>
@@ -103,7 +103,7 @@ const ProductCard = ({
           </div>
         </div>
         <div className="flex items-center justify-between">
-          <span className="text-3xl font-bold text-gray-900 dark:text-white">
+          <span className="text-3xl font-bold text-gray-900">
             {`$${price}`}
           </span>
           {!isInCart ? (

@@ -5,12 +5,12 @@ const Menu = () => {
     <>
       <div
         aria-labelledby="drawer-navigation-label"
-        className="fixed left-0 top-0 z-40 h-screen w-72 -translate-x-full overflow-y-auto bg-neutral-300 p-4 transition-transform dark:bg-gray-800"
+        className="fixed left-0 top-0 z-40 h-screen w-72 -translate-x-full overflow-y-auto bg-neutral-300 p-4 transition-transform"
         id="drawer-left-navigation"
         tabIndex="-1"
       >
         <h5
-          className="text-base font-semibold uppercase text-gray-900 dark:text-gray-700"
+          className="text-base font-semibold uppercase text-gray-900"
           id="drawer-navigation-label"
         >
           Menu
@@ -18,7 +18,7 @@ const Menu = () => {
         {/* CLOSE BTN */}
         <button
           aria-controls="drawer-left-navigation"
-          className="absolute end-2.5 top-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-900 hover:bg-gray-400 focus:bg-gray-400 dark:hover:bg-gray-600 dark:hover:text-gray-400"
+          className="absolute end-2.5 top-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-900 hover:bg-gray-400 focus:bg-gray-400"
           data-drawer-hide="drawer-left-navigation"
           type="button"
         >
@@ -45,11 +45,11 @@ const Menu = () => {
             <li>
               <Link
                 to="/"
-                className="group flex items-center rounded-lg p-2 text-gray-400 hover:bg-gray-400 dark:text-gray-500 dark:hover:bg-gray-700"
+                className="group flex items-center rounded-lg p-2 text-gray-400 hover:bg-gray-400"
               >
                 <svg
                   aria-hidden="true"
-                  className="h-5 w-5 text-gray-900 transition duration-75 dark:text-gray-700"
+                  className="h-5 w-5 text-gray-900 transition duration-75"
                   fill="currentColor"
                   viewBox="0 0 22 21"
                   xmlns="http://www.w3.org/2000/svg"
@@ -66,11 +66,11 @@ const Menu = () => {
             <li>
               <Link
                 to="products"
-                className="group flex items-center rounded-lg p-2 text-gray-400 hover:bg-gray-400 dark:text-gray-500 dark:hover:bg-gray-700"
+                className="group flex items-center rounded-lg p-2 text-gray-400 hover:bg-gray-400"
               >
                 <svg
                   aria-hidden="true"
-                  className="h-5 w-5 flex-shrink-0 text-gray-900 transition duration-75 dark:text-gray-700"
+                  className="h-5 w-5 flex-shrink-0 text-gray-900 transition duration-75"
                   fill="currentColor"
                   viewBox="0 0 18 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -84,12 +84,12 @@ const Menu = () => {
             </li>
             <li>
               <a
-                className="group flex items-center rounded-lg p-2 text-gray-400 hover:bg-gray-400 dark:text-gray-500 dark:hover:bg-gray-700"
+                className="group flex items-center rounded-lg p-2 text-gray-400 hover:bg-gray-400"
                 href="#"
               >
                 <svg
                   aria-hidden="true"
-                  className="h-5 w-5 flex-shrink-0 text-gray-900 transition duration-75 dark:text-gray-700"
+                  className="h-5 w-5 flex-shrink-0 text-gray-900 transition duration-75"
                   fill="none"
                   viewBox="0 0 18 16"
                   xmlns="http://www.w3.org/2000/svg"
