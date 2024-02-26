@@ -1,6 +1,12 @@
-import { useState } from 'react';
+import { useState, createContext } from 'react';
 import { v4 as uuid } from 'uuid';
 import Router from './Router';
+
+const ShopContext = createContext({
+  cartItems: [],
+  addToCart: () => {},
+  onUpdate: () => {},
+});
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -54,7 +60,6 @@ const App = () => {
         price: price,
         qty: qty,
       };
-      setItemQty(qty);
       setCartItems([...cartItems, newProduct]);
     }
   };

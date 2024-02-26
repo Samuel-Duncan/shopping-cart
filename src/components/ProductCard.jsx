@@ -10,7 +10,7 @@ const ProductCard = ({
 }) => {
   const [qty, setQty] = useState(itemQty);
   const initialPrice = qty * product.price;
-  const price = parseFloat(initialPrice.toFixed(2));
+  const price = initialPrice;
   const [addedToCart, setAddedToCart] = useState(false);
   const buttonColor = addedToCart ? 'bg-green-500' : 'bg-black';
 
@@ -104,7 +104,7 @@ const ProductCard = ({
         </div>
         <div className="flex items-center justify-between">
           <span className="text-3xl font-bold text-gray-900">
-            {`$${price}`}
+            {`$${price.toFixed(2)}`}
           </span>
           {!isInCart ? (
             <button
