@@ -1,12 +1,6 @@
-import { useEffect } from 'react';
-import { initFlowbite } from 'flowbite';
 import { Link } from 'react-router-dom';
 
 const Menu = () => {
-  useEffect(() => {
-    initFlowbite();
-  }, []);
-
   return (
     <>
       <div

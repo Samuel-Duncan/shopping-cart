@@ -1,12 +1,12 @@
 import { useState, useEffect, useContext } from 'react';
 import { ProductContext } from '../App';
 
-const ProductCard = ({ product, itemQty = 1, isInCart = false, onUpdate }) => {
+const ProductCard = ({ product, itemQty = 1, isInCart = false }) => {
   const [qty, setQty] = useState(itemQty);
   const price = qty * product.price;
   const [addedToCart, setAddedToCart] = useState(false);
   const buttonColor = addedToCart ? 'bg-green-500' : 'bg-black';
-  const { addToCart, removeFromCart } = useContext(ProductContext);
+  const { addToCart, removeFromCart, onUpdate } = useContext(ProductContext);
 
   useEffect(() => {
     if (onUpdate) {

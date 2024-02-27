@@ -11,6 +11,7 @@ const CartContext = createContext({
 const ProductContext = createContext({
   addToCart: () => {},
   removeFromCart: () => {},
+  onUpdate: () => {},
 });
 
 const App = () => {
@@ -77,8 +78,8 @@ const App = () => {
 
   return (
     <CartContext.Provider value={{ cartItems, cartQty, cartTotal }}>
-      <ProductContext.Provider value={{ addToCart, removeFromCart }}>
-        <Router itemQty={itemQty} onUpdate={onUpdate} />
+      <ProductContext.Provider value={{ addToCart, removeFromCart, onUpdate }}>
+        <Router itemQty={itemQty} />
       </ProductContext.Provider>
     </CartContext.Provider>
   );

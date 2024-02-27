@@ -3,12 +3,12 @@ import Header from '../components/Header';
 import Menu from '../components/Menu';
 import Cart from '../components/Cart';
 
-const Root = ({ itemQty, onUpdate }) => {
+const Root = ({ itemQty }) => {
   return (
     <>
       <Header />
       <Menu />
-      <Cart itemQty={itemQty} onUpdate={onUpdate} />
+      <Cart itemQty={itemQty} />
       <Outlet />
     </>
   );

@@ -1,14 +1,9 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { CartContext } from '../App';
-import { initFlowbite } from 'flowbite';
 import ProductCard from './ProductCard';
 
-const Cart = ({ onUpdate }) => {
+const Cart = () => {
   const { cartItems, cartQty, cartTotal } = useContext(CartContext);
-
-  useEffect(() => {
-    initFlowbite();
-  }, []);
 
   return (
     <div>
@@ -58,7 +53,6 @@ const Cart = ({ onUpdate }) => {
                   product={item.product}
                   isInCart={true}
                   itemQty={item.qty}
-                  onUpdate={onUpdate}
                 />
               ))}
           </ul>
