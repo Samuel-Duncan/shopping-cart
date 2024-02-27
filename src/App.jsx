@@ -2,16 +2,21 @@ import { useState, createContext } from 'react';
 import { v4 as uuid } from 'uuid';
 import Router from './Router';
 
-const ShopContext = createContext({
+const CartContext = createContext({
   cartItems: [],
+  cartQty: 0,
+  cartTotal: 0,
+});
+
+const ProductContext = createContext({
   addToCart: () => {},
-  onUpdate: () => {},
+  removeFromCart: () => {},
 });
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
   const cartQty = cartItems.reduce((acc, item) => acc + item.qty, 0);
-  const totalPrice = parseFloat(
+  const cartTotal = parseFloat(
     cartItems.reduce((acc, item) => acc + item.price, 0),
   ).toFixed(2);
   const [itemQty, setItemQty] = useState(null);
@@ -71,16 +76,12 @@ const App = () => {
   };
 
   return (
-    <Router
-      cartQty={cartQty}
-      onAdd={addToCart}
-      cartItems={cartItems}
-      onRemove={removeFromCart}
-      itemQty={itemQty}
-      cartTotal={totalPrice}
-      onUpdate={onUpdate}
-    />
+    <CartContext.Provider value={{ cartItems, cartQty, cartTotal }}>
+      <ProductContext.Provider value={{ addToCart, removeFromCart }}>
+        <Router itemQty={itemQty} onUpdate={onUpdate} />
+      </ProductContext.Provider>
+    </CartContext.Provider>
   );
 };
 
-export default App;
+export { CartContext, ProductContext, App };

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard';
 
-const organizeProducts = (arr) => {
+const filterProducts = (arr) => {
   return arr.map((item) => ({
     id: item.id,
     image: item.image,
@@ -24,7 +24,7 @@ const getProducts = () => {
 
         return response.json();
       })
-      .then((response) => setProducts(organizeProducts(response)))
+      .then((response) => setProducts(filterProducts(response)))
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
   }, []);
@@ -32,7 +32,7 @@ const getProducts = () => {
   return { products, error, loading };
 };
 
-const Products = ({ onAdd }) => {
+const Products = () => {
   const { products, error, loading } = getProducts();
 
   return (
@@ -70,7 +70,7 @@ const Products = ({ onAdd }) => {
           >
             {products &&
               products.map((product) => (
-                <ProductCard key={product.id} product={product} onAdd={onAdd} />
+                <ProductCard key={product.id} product={product} />
               ))}
           </ul>
         </>

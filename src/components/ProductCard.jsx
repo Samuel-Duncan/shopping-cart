@@ -1,26 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { ProductContext } from '../App';
 
-const ProductCard = ({
-  product,
-  itemQty = 1,
-  onAdd,
-  onRemove,
-  isInCart = false,
-  onUpdate,
-}) => {
+const ProductCard = ({ product, itemQty = 1, isInCart = false, onUpdate }) => {
   const [qty, setQty] = useState(itemQty);
-  const initialPrice = qty * product.price;
-  const price = initialPrice;
+  const price = qty * product.price;
   const [addedToCart, setAddedToCart] = useState(false);
   const buttonColor = addedToCart ? 'bg-green-500' : 'bg-black';
-
-  useEffect(() => {}, [product]);
+  const { addToCart, removeFromCart } = useContext(ProductContext);
 
   useEffect(() => {
     if (onUpdate) {
       onUpdate(product.id, qty, price);
     }
-  }, [price, product, qty]);
+  }, [qty]);
 
   const onAddToCart = () => {
     setAddedToCart(true);
@@ -109,7 +101,7 @@ const ProductCard = ({
           {!isInCart ? (
             <button
               onClick={() => {
-                onAdd(product, price, qty);
+                addToCart(product, price, qty);
                 onAddToCart();
                 resetQty();
               }}
@@ -121,7 +113,7 @@ const ProductCard = ({
           ) : (
             <button
               onClick={() => {
-                onRemove(product.id);
+                removeFromCart(product.id);
                 resetQty();
               }}
               href="#"

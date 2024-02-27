@@ -1,13 +1,10 @@
-import { useEffect } from 'react';
+import { useContext } from 'react';
+import { CartContext } from '../App';
 import ProductCard from './ProductCard';
 
-const Cart = ({
-  cartQty = 0,
-  cartItems,
-  onRemove,
-  cartTotal = 0,
-  onUpdate,
-}) => {
+const Cart = ({ onUpdate }) => {
+  const { cartItems, cartQty, cartTotal } = useContext(CartContext);
+
   return (
     <div>
       <div
@@ -54,7 +51,6 @@ const Cart = ({
                 <ProductCard
                   key={item.product.id}
                   product={item.product}
-                  onRemove={onRemove}
                   isInCart={true}
                   itemQty={item.qty}
                   onUpdate={onUpdate}

@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { CartContext } from '../App';
 import { Link } from 'react-router-dom';
 
-const Header = ({ cartQty = 0 }) => {
+const Header = () => {
+  const { cartQty } = useContext(CartContext);
   const [isScrolledDown, setIsScrolledDown] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      setIsScrolledDown(scrollTop > 15); // Change 100 to the desired scroll depth
+      setIsScrolledDown(scrollTop > 15);
     };
 
     window.addEventListener('scroll', handleScroll);

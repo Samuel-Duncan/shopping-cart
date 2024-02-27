@@ -3,28 +3,11 @@ import Root from './routes/Root';
 import Home from './routes/Home';
 import Products from './routes/Products';
 
-const Router = ({
-  cartQty,
-  onAdd,
-  cartItems,
-  onRemove,
-  itemQty,
-  cartTotal,
-  onUpdate,
-}) => {
+const Router = ({ itemQty, onUpdate }) => {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: (
-        <Root
-          cartQty={cartQty}
-          cartItems={cartItems}
-          onRemove={onRemove}
-          itemQty={itemQty}
-          cartTotal={cartTotal}
-          onUpdate={onUpdate}
-        />
-      ),
+      element: <Root itemQty={itemQty} onUpdate={onUpdate} />,
       children: [
         {
           index: true,
@@ -32,7 +15,7 @@ const Router = ({
         },
         {
           path: 'products',
-          element: <Products onAdd={onAdd} />,
+          element: <Products />,
         },
       ],
     },
