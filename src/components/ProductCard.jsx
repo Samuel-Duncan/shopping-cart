@@ -1,8 +1,25 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useReducer } from 'react';
 import { ProductContext } from '../App';
 
+const qtyReducer = (qty, action) => {
+  switch (action.type) {
+    case 'increment': {
+      return qty + 1;
+    }
+    case 'decrement': {
+      return qty - 1;
+    }
+    case 'reset': {
+      return 1;
+    }
+    default: {
+      throw Error(`Unknown action: ${action.type}`);
+    }
+  }
+};
+
 const ProductCard = ({ product, itemQty = 1, isInCart = false }) => {
-  const [qty, setQty] = useState(itemQty);
+  const [qty, dispatch] = useReducer(qtyReducer, itemQty);
   const price = qty * product.price;
   const [addedToCart, setAddedToCart] = useState(false);
   const buttonColor = addedToCart ? 'bg-green-500' : 'bg-black';
@@ -21,16 +38,25 @@ const ProductCard = ({ product, itemQty = 1, isInCart = false }) => {
     }, 1250);
   };
 
-  const onInc = () => {
-    setQty((prevQty) => prevQty + 1);
+  const handleIncrement = () => {
+    dispatch({
+      type: 'increment',
+      qty: qty + 1,
+    });
   };
 
-  const onDec = () => {
-    setQty((prevQty) => prevQty - 1);
+  const handleDecrement = () => {
+    dispatch({
+      type: 'decrement',
+      qty: qty - 1,
+    });
   };
 
-  const resetQty = () => {
-    setQty(1);
+  const handleReset = () => {
+    dispatch({
+      type: 'reset',
+      qty: 1,
+    });
   };
 
   return (
@@ -51,7 +77,7 @@ const ProductCard = ({ product, itemQty = 1, isInCart = false }) => {
           </a>
           <div className="mb-5 mt-2.5 flex items-center">
             <button
-              onClick={() => onDec()}
+              onClick={() => handleDecrement()}
               disabled={qty <= 1}
               className="inline-flex items-center rounded-l border border-r border-gray-200 bg-white px-2 py-1 text-gray-600 hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50"
             >
@@ -74,7 +100,7 @@ const ProductCard = ({ product, itemQty = 1, isInCart = false }) => {
               {qty}
             </div>
             <button
-              onClick={() => onInc()}
+              onClick={() => handleIncrement()}
               className="inline-flex items-center rounded-r border border-r border-gray-200 bg-white px-2 py-1 text-gray-600 hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50"
             >
               <svg
@@ -103,7 +129,7 @@ const ProductCard = ({ product, itemQty = 1, isInCart = false }) => {
               onClick={() => {
                 addToCart(product, price, qty);
                 onAddToCart();
-                resetQty();
+                handleReset();
               }}
               href="#"
               className={`${buttonColor} ${addedToCart ? 'hover:bg-green-500' : 'hover:bg-[#050708]/90'} rounded-lg px-5 py-2.5 text-center text-lg font-medium text-neutral-300 transition-colors  focus:outline-none`}
@@ -114,7 +140,7 @@ const ProductCard = ({ product, itemQty = 1, isInCart = false }) => {
             <button
               onClick={() => {
                 removeFromCart(product.id);
-                resetQty();
+                handleReset();
               }}
               href="#"
               className="rounded-lg bg-red-700 px-5 py-2.5 text-center text-lg font-medium text-neutral-200 hover:bg-red-600 focus:outline-none"
