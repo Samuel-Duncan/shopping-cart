@@ -1,5 +1,4 @@
-import { useState, createContext, useEffect } from 'react';
-import { initFlowbite } from 'flowbite';
+import { useState, createContext } from 'react';
 import { v4 as uuid } from 'uuid';
 import Router from './Router';
 
@@ -22,10 +21,6 @@ const App = () => {
     cartItems.reduce((acc, item) => acc + item.price, 0),
   ).toFixed(2);
   const [itemQty, setItemQty] = useState(null);
-
-  useEffect(() => {
-    initFlowbite(); // Ensures Flowbite components work
-  }, []);
 
   const isInCart = (items, id) => {
     return items.some((item) => item.product.id === id);
